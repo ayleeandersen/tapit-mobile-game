@@ -157,6 +157,14 @@ export default class App extends Component<Props> {
       });
     }
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps === this.props && nextState === this.state) {
+        return false;
+    } else {
+        return true;
+    }
+  }
 }
 
 const styles = StyleSheet.create({

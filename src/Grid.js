@@ -47,6 +47,14 @@ export default class Grid extends Component {
 
         return hexColor;
     }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps === this.props) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 
 const styles = StyleSheet.create({

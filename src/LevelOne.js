@@ -30,7 +30,7 @@ export default class LevelOne extends Component {
                         <Text style={styles.counter}>{this.state.counter}</Text>
                     </View>
                 </View>
-                <Grid level={1} pressed={(isGoodCell) => this.updateCounter(isGoodCell)}></Grid>
+                <Grid level={1} pressed={(isGoodCell) => this.updateCounter(isGoodCell)}/>
             </View>
         );
     }
@@ -46,8 +46,17 @@ export default class LevelOne extends Component {
     }
 
     endLevel() {
-        let didWin = this.state.counter >= 15 ? true : false;
+        //TODO: change to 15
+        let didWin = this.state.counter >= 5 ? true : false;
         this.props.onFinish(didWin);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps === this.props && nextState === this.state) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 

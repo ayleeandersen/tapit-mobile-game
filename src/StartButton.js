@@ -7,13 +7,21 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 export default class StartButton extends Component {
-  render() {
-    return (
-        <TouchableOpacity style={styles.button} activeOpacity={0.75} onPress={this.props.pressed}>
-            <Text style={styles.text}>{this.props.buttonText}</Text>
-        </TouchableOpacity>
+    render() {
+        return (
+            <TouchableOpacity style={styles.button} activeOpacity={0.75} onPress=     {this.props.pressed}>
+                <Text style={styles.text}>{this.props.buttonText}</Text>
+            </TouchableOpacity>
     );
   }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps === this.props) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 
 const styles = StyleSheet.create({

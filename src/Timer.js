@@ -13,6 +13,7 @@ export default class Timer extends Component {
             time: 10,
         }
 
+        this.timer;
         this.startTimer();
     }
 
@@ -24,17 +25,30 @@ export default class Timer extends Component {
 
     startTimer() {
         // updates time every second
-        let timer = setInterval(() => {
+         this.timer = setInterval(() => {
             this.setState((prevState) => {
                 return {
                     time: prevState.time - 1
                 }
             });
             if (this.state.time === 0) {
-                clearInterval(timer);
+                clearInterval(this.timer);
                 this.props.onFinish();
             }
         }, 1000);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps === this.props && nextState === this.state) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    componentWillUnmount() {
+        // Clear timer in case application gets closed during game play
+        clearInterval(this.timer);
     }
 }
 

@@ -16,7 +16,8 @@ export default class LevelTwo extends Component {
     }
 
     render() {
-        if (this.state.counter === 20) {
+        //TODO: change back to 20
+        if (this.state.counter === 5) {
             this.endLevel(true);
         }
 
@@ -48,6 +49,14 @@ export default class LevelTwo extends Component {
 
     endLevel(didWin) {
         this.props.onFinish(didWin);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps === this.props && nextState === this.state) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 
