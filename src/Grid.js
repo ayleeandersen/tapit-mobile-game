@@ -19,7 +19,7 @@ export default class Grid extends Component {
                     style={[
                         styles.tile, 
                         this.props.level === 1 ? {backgroundColor: 'white'} : {backgroundColor: this.randomColor()},
-                        randomCell === i && {backgroundColor: 'gray'} 
+                        randomCell === i && {backgroundColor: '#0085a1'} 
                     ]}
                     onPress={() => this.props.pressed(randomCell === i ? true : false)}
                 />
@@ -36,10 +36,9 @@ export default class Grid extends Component {
     randomColor() {
         // Thank you stackoverflow: https://stackoverflow.com/questions/1484506/random-color-generator
 
-        //TODO: once background color is changed to a hex color instead of gray, add a while loop to run until the hexColor is different than the good color. 
         let letters = "0123456789ABCDEF";
-        let hexColor = 'gray';
-        while (hexColor === 'gray') {
+        let hexColor = '#0085a1';
+        while (hexColor === '#0085a1') {
             hexColor = "#";
             for (let i = 0; i < 6; i++) {
                 hexColor += letters[Math.floor(Math.random() * 16)];

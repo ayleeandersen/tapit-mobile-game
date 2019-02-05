@@ -41,7 +41,7 @@ export default class Timer extends Component {
 const styles = StyleSheet.create({
     timer: {
         padding: 15,
-        fontSize: 20,
-        color: 'red',
+        fontSize: 25,
+        color: '#d67e73',
     },
 });

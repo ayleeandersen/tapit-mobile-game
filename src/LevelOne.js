@@ -40,8 +40,7 @@ export default class LevelOne extends Component {
     }
 
     endLevel() {
-        //TODO: change back to 15
-        let didWin = this.state.counter >= 5 ? true : false;
+        let didWin = this.state.counter >= 15 ? true : false;
         this.props.onFinish(didWin);
     }
 }
@@ -54,19 +53,19 @@ const styles = StyleSheet.create({
         flex: 0,
         width: '100%',
         flexDirection: 'row',
-        backgroundColor: 'gray',
+        backgroundColor: '#cce6ec',
         padding: 15,
     },
     level: {
         flexGrow: 1,
         textAlign: 'center',
         padding: 15,
-        fontSize: 15,
-        color: 'blue'
+        fontSize: 25,
+        color: '#d67e73'
     },
     counter: {
         padding: 15,
-        fontSize: 20,
-        color: 'green'
+        fontSize: 25,
+        color: '#d67e73'
     }
 });

@@ -20,10 +20,11 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         padding: 15,
-        backgroundColor: '#dd98f2',
+        backgroundColor: '#0085a1',
         borderRadius: 10,
     },
     text: {
-        fontSize: 20
+        fontSize: 20,
+        color: '#F5FCFF',
     },
 });

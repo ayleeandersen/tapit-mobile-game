@@ -16,8 +16,7 @@ export default class LevelTwo extends Component {
     }
 
     render() {
-        // TODO: change to 20
-        if (this.state.counter === 5) {
+        if (this.state.counter === 20) {
             this.endLevel(true);
         }
 
@@ -57,19 +56,19 @@ const styles = StyleSheet.create({
         flex: 0,
         width: '100%',
         flexDirection: 'row',
-        backgroundColor: 'gray',
+        backgroundColor: '#cce6ec',
         padding: 15,
     },
     level: {
         flexGrow: 1,
         textAlign: 'center',
         padding: 15,
-        fontSize: 15,
-        color: 'blue'
+        fontSize: 25,
+        color: '#d67e73'
     },
     counter: {
         padding: 15,
-        fontSize: 20,
-        color: 'green'
+        fontSize: 25,
+        color: '#d67e73'
     }
 });

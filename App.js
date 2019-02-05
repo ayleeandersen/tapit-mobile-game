@@ -49,6 +49,7 @@ export default class App extends Component<Props> {
   _renderStart() {
     return (
       <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome to Tapit (Tah-Peet)!</Text>
         <StartButton 
           buttonText="Start Game" 
           pressed={() => this.setState({
@@ -71,7 +72,7 @@ export default class App extends Component<Props> {
   _renderIntermediateScreen() {
     return (
       <View style={styles.container}>
-        <Text style={styles.intermediate}>YOU PASSED LEVEL ONE!!</Text>
+        <Text style={styles.intermediate}>You Passed Level One!</Text>
         <StartButton
           buttonText="Start Level 2"
           pressed={() => this.setState({
@@ -95,7 +96,7 @@ export default class App extends Component<Props> {
   _renderLostGame() {
     return (
       <View style={styles.container}>
-        <Text style={styles.lostGame}>YOU LOST</Text>
+        <Text style={styles.lostGame}>You Lost!</Text>
         <StartButton
           buttonText="Play Again"
           pressed={() => this.setState({
@@ -113,7 +114,7 @@ export default class App extends Component<Props> {
   _renderWonGame() {
     return (
       <View style={styles.container}>
-        <Text style={styles.wonGame}>YOU WON</Text>
+        <Text style={styles.wonGame}>You Won!</Text>
         <StartButton
           buttonText="Play Again"
           pressed={() => this.setState({
@@ -165,19 +166,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  welcome: {
+    padding: 15,
+    marginBottom: 20,
+    fontSize: 20,
+    color: 'black'
+  },
   lostGame: {
     padding: 15,
+    marginBottom: 20,
     fontSize: 20,
-    color: 'red',
+    color: '#d67e73',
   },
   wonGame: {
     padding: 15,
+    marginBottom: 20,
     fontSize: 20,
-    color: 'green'
+    color: 'black'
   },
   intermediate: {
     padding: 15,
+    marginBottom: 20,
     fontSize: 20,
-    color: 'blue'
+    color: 'black'
   }
 });
