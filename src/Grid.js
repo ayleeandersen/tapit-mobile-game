@@ -15,7 +15,7 @@ export default class Grid extends Component {
             cells.push(
                 <TouchableOpacity 
                     key={i} 
-                    activeOpacity={1} 
+                    activeOpacity={0.75} 
                     style={[
                         styles.tile, 
                         this.props.level === 1 ? {backgroundColor: 'white'} : {backgroundColor: this.randomColor()},

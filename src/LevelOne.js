@@ -20,9 +20,15 @@ export default class LevelOne extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Timer onFinish={() => this.endLevel()}/>
+                    <View style={styles.conter}>
+                        <Text style={styles.headerText}>Time:</Text>
+                        <Timer onFinish={() => this.endLevel()}/>
+                    </View>
                     <Text style={styles.level}>Tapit - Level One</Text>
-                    <Text style={styles.counter}>{this.state.counter}</Text>
+                    <View style={styles.container}>
+                        <Text style={styles.headerText}>Score:</Text>
+                        <Text style={styles.counter}>{this.state.counter}</Text>
+                    </View>
                 </View>
                 <Grid level={1} pressed={(isGoodCell) => this.updateCounter(isGoodCell)}></Grid>
             </View>
@@ -56,16 +62,23 @@ const styles = StyleSheet.create({
         backgroundColor: '#cce6ec',
         padding: 15,
     },
+    headerText: {
+        fontSize: 15,
+        color: '#d67e73',
+        padding: 5,
+        textAlign: 'center'
+    },
     level: {
         flexGrow: 1,
         textAlign: 'center',
-        padding: 15,
+        padding: 10,
         fontSize: 25,
         color: '#d67e73'
     },
     counter: {
-        padding: 15,
+        padding: 10,
         fontSize: 25,
-        color: '#d67e73'
+        color: '#d67e73',
+        textAlign: 'center',
     }
 });

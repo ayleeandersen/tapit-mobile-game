@@ -40,8 +40,9 @@ export default class Timer extends Component {
 
 const styles = StyleSheet.create({
     timer: {
-        padding: 15,
+        padding: 10,
         fontSize: 25,
         color: '#d67e73',
+        textAlign: 'center'
     },
 });
