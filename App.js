@@ -11,6 +11,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import StartButton from './src/StartButton';
 import LevelOne from './src/LevelOne';
+import LevelTwo from './src/LevelTwo';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -20,6 +21,7 @@ export default class App extends Component<Props> {
     this.state = {
       isStarting: true,
       onLevelOne: false,
+      intermediate: false,
       onLevelTwo: false,
       lostGame: false,
       wonGame: false
@@ -29,19 +31,17 @@ export default class App extends Component<Props> {
   render() {
     if (this.state.isStarting) {
       return this._renderStart();
-    }
-    else if (this.state.onLevelOne) {
+    } else if (this.state.onLevelOne) {
       return this._renderLevelOne();
-    }
-
-    
-    else if (this.state.lostGame) {
+    } else if (this.state.intermediate) {
+      return this._renderIntermediateScreen();
+    } else if (this.state.onLevelTwo) {
+      return this._renderLevelTwo();
+    } else if (this.state.lostGame) {
       return this._renderLostGame();
-    } 
-    else if (this.state.wonGame) {
+    } else if (this.state.wonGame) {
       return this._renderWonGame();
-    }
-    else {
+    } else {
       return this._renderStart();
     }
   }
@@ -64,6 +64,30 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <LevelOne onFinish={(didWin) => this.finished(didWin)}></LevelOne>
+      </View>
+    );
+  }
+
+  _renderIntermediateScreen() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.intermediate}>YOU PASSED LEVEL ONE!!</Text>
+        <StartButton
+          buttonText="Start Level 2"
+          pressed={() => this.setState({
+            onLevelOne: false,
+            intermediate: false,
+            onLevelTwo: true,
+          })}
+        />
+      </View>
+    );
+  }
+
+  _renderLevelTwo() {
+    return (
+      <View style={styles.container}>
+        <LevelTwo onFinish={(didWin) => this.finished(didWin)}></LevelTwo>
       </View>
     );
   }
@@ -105,9 +129,19 @@ export default class App extends Component<Props> {
   }
 
   finished(didWin) {
-    if (didWin) {
+    if (didWin && this.state.onLevelOne) {
       this.setState({
         onLevelOne: false,
+        intermediate: true,
+        onLevelTwo: false,
+        lostGame: false,
+        wonGame: false
+      });
+    }
+    else if (didWin && this.state.onLevelTwo) {
+      this.setState({
+        onLevelOne: false,
+        intermediate: false,
         onLevelTwo: false,
         lostGame: false,
         wonGame: true
@@ -115,6 +149,7 @@ export default class App extends Component<Props> {
     } else {
       this.setState({
         onLevelOne: false,
+        intermediate: false,
         onLevelTwo: false,
         lostGame: true,
         wonGame: false
@@ -139,5 +174,10 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 20,
     color: 'green'
+  },
+  intermediate: {
+    padding: 15,
+    fontSize: 20,
+    color: 'blue'
   }
 });

@@ -1,13 +1,12 @@
 /**
- * Code for the first level of tapit
+ * Code for the second level of tapit
  */
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Grid from './Grid';
-import Timer from './Timer';
 
-export default class LevelOne extends Component {
+export default class LevelTwo extends Component {
     constructor(props) {
         super(props);
 
@@ -17,14 +16,18 @@ export default class LevelOne extends Component {
     }
 
     render() {
+        // TODO: change to 20
+        if (this.state.counter === 5) {
+            this.endLevel(true);
+        }
+
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Timer onFinish={() => this.endLevel()}/>
-                    <Text style={styles.level}>Tapit - Level One</Text>
+                    <Text style={styles.level}>Tapit - Level Two</Text>
                     <Text style={styles.counter}>{this.state.counter}</Text>
                 </View>
-                <Grid level={1} pressed={(isGoodCell) => this.updateCounter(isGoodCell)}></Grid>
+                <Grid level={2} pressed={(isGoodCell) => this.updateCounter(isGoodCell)}></Grid>
             </View>
         );
     }
@@ -36,12 +39,12 @@ export default class LevelOne extends Component {
                     counter: prevState.counter + 1
                 }
             });
+        } else {
+            this.endLevel(false);
         }
     }
 
-    endLevel() {
-        //TODO: change back to 15
-        let didWin = this.state.counter >= 5 ? true : false;
+    endLevel(didWin) {
         this.props.onFinish(didWin);
     }
 }
