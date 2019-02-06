@@ -24,7 +24,7 @@ export default class Timer extends Component {
     }
 
     startTimer() {
-        // updates time every second
+        // Updates time every second
          this.timer = setInterval(() => {
             this.setState((prevState) => {
                 return {

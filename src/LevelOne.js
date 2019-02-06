@@ -46,8 +46,7 @@ export default class LevelOne extends Component {
     }
 
     endLevel() {
-        //TODO: change to 15
-        let didWin = this.state.counter >= 5 ? true : false;
+        let didWin = this.state.counter >= 15 ? true : false;
         this.props.onFinish(didWin);
     }
 
